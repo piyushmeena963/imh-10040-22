@@ -1,0 +1,35 @@
+import java.util.Scanner;
+
+public class BankUserValidation {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter your name: ");
+        String name = scanner.nextLine();
+
+        if (validateName(name)) {
+            System.out.print("Enter your age: ");
+            int age = scanner.nextInt();
+
+            if (validateAge(age)) {
+                System.out.println("User information validated successfully.");
+            } else {
+                System.out.println("Invalid age. Please enter an age between 3 and 15.");
+            }
+        } else {
+            System.out.println("Invalid name. Please enter a valid name with only alphabets.");
+        }
+
+        scanner.close();
+    }
+
+    private static boolean validateName(String name) {
+        return name.matches("[a-zA-Z]+");
+    }
+
+    
+    private static boolean validateAge(int age) {
+        return age >= 3 && age <= 15;
+    }
+}
