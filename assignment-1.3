@@ -1,0 +1,54 @@
+import java.util.Scanner;
+
+public class DeleteElement {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the size of the array: ");
+        int sizeOfArray = scanner.nextInt();
+
+        System.out.print("Enter the total elements present in the array: ");
+        int totalElements = scanner.nextInt();
+
+        if (totalElements > sizeOfArray) {
+            System.out.println("Error: Total elements cannot be greater than the size of the array.");
+            return;
+        }
+
+        int[] array = new int[sizeOfArray];
+
+        System.out.println("Enter the elements of the array:");
+
+        for (int i = 0; i < totalElements; i++) {
+            System.out.print("Enter element " + (i + 1) + ": ");
+            array[i] = scanner.nextInt();
+        }
+
+        System.out.print("Enter the index position for deletion: ");
+        int loc = scanner.nextInt();
+
+        if (loc < 1 || loc > totalElements) {
+            System.out.println("Invalid index position for deletion.");
+        } else {
+            int[] newArray = new int[sizeOfArray];
+            for (int i = 0, j = 0; i < totalElements; i++) {
+                if (i == loc - 1) {
+                    continue;
+                }
+                newArray[j++] = array[i];
+            }
+
+            System.out.print("Array after deletion: [");
+            for (int i = 0; i < totalElements - 1; i++) {
+                System.out.print(newArray[i]);
+                if (i < totalElements - 2) {
+                    System.out.print(", ");
+                }
+            }
+            System.out.println("]");
+        }
+
+        scanner.close();
+    }
+}
