@@ -1,0 +1,59 @@
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Scanner;
+import java.util.Set;
+
+public class SplitAndCheckDuplicates {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the size of the array: ");
+        int sizeOfArray = scanner.nextInt();
+
+        int[] originalArray = new int[sizeOfArray];
+
+        System.out.println("Enter the elements of the array:");
+
+        for (int i = 0; i < sizeOfArray; i++) {
+            System.out.print("Enter element " + (i + 1) + ": ");
+            originalArray[i] = scanner.nextInt();
+        }
+
+        System.out.print("Enter the position to split the array: ");
+        int splitPosition = scanner.nextInt();
+
+        if (splitPosition < 1 || splitPosition > sizeOfArray - 1) {
+            System.out.println("Invalid split position.");
+            return;
+        }
+
+        int[] firstPart = Arrays.copyOfRange(originalArray, 0, splitPosition);
+        int[] secondPart = Arrays.copyOfRange(originalArray, splitPosition, sizeOfArray);
+
+        System.out.println("\nFirst Part of the Array: " + Arrays.toString(firstPart));
+        System.out.println("Second Part of the Array: " + Arrays.toString(secondPart));
+
+        checkAndDisplayDuplicates(firstPart);
+        checkAndDisplayDuplicates(secondPart);
+
+        scanner.close();
+    }
+
+    private static void checkAndDisplayDuplicates(int[] arr) {
+        Set<Integer> seen = new HashSet<>();
+        Set<Integer> duplicates = new HashSet<>();
+
+        for (int num : arr) {
+            if (!seen.add(num)) {
+                duplicates.add(num);
+            }
+        }
+
+        if (!duplicates.isEmpty()) {
+            System.out.println("Duplicate elements in the array: " + duplicates);
+        } else {
+            System.out.println("No duplicate elements found in the array.");
+        }
+    }
+}
