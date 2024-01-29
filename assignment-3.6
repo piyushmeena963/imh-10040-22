@@ -1,0 +1,26 @@
+public class TypePromotionExample {
+
+    public static void main(String[] args) {
+        TypePromotionExample demo = new TypePromotionExample();
+
+        demo.display(5);
+        demo.display(3.14);
+
+        // Uncommenting the line below will result in a compilation error
+        // demo.display((int) 3.14);
+
+        demo.display((float) 3.14);
+    }
+
+    private void display(int num) {
+        System.out.println("Displaying int: " + num);
+    }
+
+    private void display(double num) {
+        System.out.println("Displaying double: " + num);
+    }
+
+    private void display(float num) {
+        System.out.println("Displaying float: " + num);
+    }
+}
