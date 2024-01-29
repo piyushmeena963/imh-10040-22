@@ -1,0 +1,71 @@
+import java.util.Scanner;
+
+public class ShapeCalculator {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Select a shape: ");
+        System.out.println("1. Rectangle");
+        System.out.println("2. Circle");
+        System.out.println("3. Square");
+
+        int choice = scanner.nextInt();
+
+        switch (choice) {
+            case 1:
+                System.out.print("Enter length and width of rectangle: ");
+                double lengthRect = scanner.nextDouble();
+                double widthRect = scanner.nextDouble();
+                System.out.println("Area: " + calculateArea(lengthRect, widthRect));
+                System.out.println("Perimeter: " + calculatePerimeter(lengthRect, widthRect));
+                break;
+
+            case 2:
+                System.out.print("Enter radius of circle: ");
+                double radiusCircle = scanner.nextDouble();
+                System.out.println("Area: " + calculateArea(radiusCircle));
+                System.out.println("Circumference: " + calculateCircumference(radiusCircle));
+                break;
+
+            case 3:
+                System.out.print("Enter side length of square: ");
+                double sideSquare = scanner.nextDouble();
+                System.out.println("Area: " + calculateArea(sideSquare));
+                System.out.println("Perimeter: " + calculatePerimeter(sideSquare));
+                break;
+
+            default:
+                System.out.println("Invalid choice.");
+        }
+
+        scanner.close();
+    }
+
+    // Rectangle
+    private static double calculateArea(double length, double width) {
+        return length * width;
+    }
+
+    private static double calculatePerimeter(double length, double width) {
+        return 2 * (length + width);
+    }
+
+    // Circle
+    private static double calculateArea(double radius) {
+        return Math.PI * radius * radius;
+    }
+
+    private static double calculateCircumference(double radius) {
+        return 2 * Math.PI * radius;
+    }
+
+    // Square
+    private static double calculateArea(double side) {
+        return side * side;
+    }
+
+    private static double calculatePerimeter(double side) {
+        return 4 * side;
+    }
+}
