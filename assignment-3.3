@@ -1,0 +1,43 @@
+public class VariableArgumentsExample {
+
+    public static void main(String[] args) {
+        displayTotalArguments(1, 2, 3, 4, 5);
+
+        int maxNumber = findMaximum(10, 5, 8, 15, 3);
+        System.out.println("Maximum number: " + maxNumber);
+
+        int sum = calculateSum(2, 4, 6, 8, 10);
+        System.out.println("Sum of elements: " + sum);
+
+        displayMixedArguments("Hello", 123, 3.14, true);
+    }
+
+    private static void displayTotalArguments(int... numbers) {
+        System.out.println("Total number of arguments: " + numbers.length);
+    }
+
+    private static int findMaximum(int... numbers) {
+        int max = Integer.MIN_VALUE;
+        for (int num : numbers) {
+            if (num > max) {
+                max = num;
+            }
+        }
+        return max;
+    }
+
+    private static int calculateSum(int... numbers) {
+        int sum = 0;
+        for (int num : numbers) {
+            sum += num;
+        }
+        return sum;
+    }
+
+    private static void displayMixedArguments(Object... args) {
+        System.out.println("Mixed arguments:");
+        for (Object arg : args) {
+            System.out.println(arg);
+        }
+    }
+}
