@@ -1,0 +1,69 @@
+import java.util.Scanner;
+
+public class SeparateEvenOdd {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the size of the array: ");
+        int sizeOfArray = scanner.nextInt();
+
+        int[] originalArray = new int[sizeOfArray];
+        int[] evenArray;
+        int[] oddArray;
+
+        System.out.println("Enter the elements of the array:");
+
+        for (int i = 0; i < sizeOfArray; i++) {
+            System.out.print("Enter element " + (i + 1) + ": ");
+            originalArray[i] = scanner.nextInt();
+        }
+
+        int evenCount = 0;
+        int oddCount = 0;
+
+        for (int num : originalArray) {
+            if (num % 2 == 0) {
+                evenCount++;
+            } else {
+                oddCount++;
+            }
+        }
+
+        evenArray = new int[evenCount];
+        oddArray = new int[oddCount];
+
+        int evenIndex = 0;
+        int oddIndex = 0;
+
+        for (int num : originalArray) {
+            if (num % 2 == 0) {
+                evenArray[evenIndex++] = num;
+            } else {
+                oddArray[oddIndex++] = num;
+            }
+        }
+
+        System.out.println("\nOriginal Array:");
+        displayArray(originalArray);
+
+        System.out.println("\nEven Array:");
+        displayArray(evenArray);
+
+        System.out.println("\nOdd Array:");
+        displayArray(oddArray);
+
+        scanner.close();
+    }
+
+    private static void displayArray(int[] arr) {
+        System.out.print("[");
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i]);
+            if (i < arr.length - 1) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println("]");
+    }
+}
