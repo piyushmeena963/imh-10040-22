@@ -1,0 +1,51 @@
+import java.util.Scanner;
+
+public class InsertElement {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the size of the array: ");
+        int sizeOfArray = scanner.nextInt();
+
+        int[] array = new int[sizeOfArray];
+
+        System.out.println("Enter the elements of the array:");
+
+        for (int i = 0; i < sizeOfArray; i++) {
+            System.out.print("Enter element " + (i + 1) + ": ");
+            array[i] = scanner.nextInt();
+        }
+
+        System.out.print("Enter the position for insertion: ");
+        int position = scanner.nextInt();
+
+        System.out.print("Enter the element to be inserted: ");
+        int element = scanner.nextInt();
+
+        if (position < 1 || position > sizeOfArray + 1) {
+            System.out.println("Invalid position for insertion.");
+        } else {
+            int[] newArray = new int[sizeOfArray + 1];
+
+            for (int i = 0, j = 0; i < newArray.length; i++) {
+                if (i == position - 1) {
+                    newArray[i] = element;
+                } else {
+                    newArray[i] = array[j++];
+                }
+            }
+
+            System.out.print("Array after insertion: [");
+            for (int i = 0; i < newArray.length; i++) {
+                System.out.print(newArray[i]);
+                if (i < newArray.length - 1) {
+                    System.out.print(", ");
+                }
+            }
+            System.out.println("]");
+        }
+
+        scanner.close();
+    }
+}
