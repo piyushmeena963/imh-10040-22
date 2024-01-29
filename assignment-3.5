@@ -1,0 +1,25 @@
+public class SumAndReverse {
+
+    public static void main(String[] args) {
+        int[] numbers = { 1, 2, 3, 4, 5 };
+        int sum = findSum(numbers);
+        System.out.println("Sum of values: " + sum);
+        displayReverse(sum);
+    }
+
+    private static int findSum(int[] array) {
+        int sum = 0;
+        for (int num : array) {
+            sum += num;
+        }
+        return sum;
+    }
+
+    private static void displayReverse(int num) {
+        String numString = Integer.toString(num);
+        System.out.print("Sum in reverse order: ");
+        for (int i = numString.length() - 1; i >= 0; i--) {
+            System.out.print(numString.charAt(i) + " ");
+        }
+    }
+}
