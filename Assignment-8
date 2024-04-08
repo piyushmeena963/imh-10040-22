@@ -1,0 +1,404 @@
+//q1a
+
+                                                                                   /*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package day8;
+
+/**
+ *
+ * @author acer
+ */
+class Outer{
+    class Inner{
+        void display(){
+            System.out.println("Inside display Inner");
+        }
+    }
+}
+public class q1a {
+    public static void main(String[] args) {
+        Outer.Inner in =new Outer().new Inner();
+        in.display();
+    }
+}
+
+//q1b
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package day8;
+
+/**
+ *
+ * @author acer
+ */
+class Outer1{
+    void display_Outer1(){
+        System.out.println("In Outer display");
+        class Inner1{
+            void display_Inner1(){
+                System.out.println("In Inner Meathod");
+            }    
+        }
+        Inner1 in=new Inner1();
+        in.display_Inner1();
+    }
+}
+public class q1b {
+    public static void main(String[] args) {
+        Outer1 out=new Outer1();
+        out.display_Outer1();
+    }
+}
+
+//q1c
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package day8;
+
+/**
+ *
+ * @author acer
+ */
+
+
+class Outer2{
+    static class Inner2{
+        public static void display(){
+            System.out.println("Inside display Inner");
+        }
+    }
+}
+public class q1c {
+    public static void main(String[] args) {
+        Outer2.Inner2.display();
+    }
+}
+
+//q2
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package day8;
+
+/**
+ *
+ * @author acer
+ */
+abstract class Bike{
+    abstract void run();
+    
+    
+}
+class Honda extends Bike{
+    
+    void run(){
+        System.out.println("hello I am running with Honda");
+    }
+}
+public class q2 {
+    public static void main(String[] args) {
+        Bike obj=new Honda();
+        obj.run();
+    }
+}
+
+//q3
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package day8;
+
+/**
+ *
+ * @author acer
+ */
+import java.util.*;
+abstract class Shape{
+      abstract void  perimeter();
+      abstract void area();
+}
+class Circle extends Shape{
+    int r;
+    void area(){
+        System.out.println("Circle area  : "+3.14*r*r);
+    }
+    void perimeter(){
+        System.out.println("Circle Perimeter : "+2*3.14*r);
+    }
+}
+class Rectangle extends Shape{
+    int length;
+    int breadth;
+    void perimeter(){
+        System.out.println("Rectangle Perimeter :"+2*(length+breadth));
+    }
+    void area(){
+        System.out.println("Rectangle area :"+length*breadth);
+    }
+}
+public class q3 {
+    public static void main(String[] args){ 
+        Scanner sc=new Scanner(System.in);
+        Rectangle obj1=new Rectangle();
+        System.out.println("Entet length of Rectangle:");
+        obj1.length=sc.nextInt();
+        System.out.println("Enter breadth of Rectangle");
+        obj1.breadth=sc.nextInt();
+        obj1.area();
+        obj1.perimeter();
+        Circle obj2=new Circle();
+        System.out.println("Enter Radius of Circle");
+        obj2.r=sc.nextInt();
+        obj2.area();
+        obj2.perimeter();
+        
+    }
+}
+
+//q4
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package day8;
+
+/**
+ *
+ * @author acer
+ */ 
+import java.util.*;
+interface Person{
+    int x=13;
+    void Name();
+    void Company();
+}
+class Employee implements Person{
+    String s;
+    public void Name(){
+        System.out.println("Employee Name:"+s);
+    } 
+    public void Company(){
+        System.out.println(s+ " is working in Google India");
+    }
+     
+
+}
+public class q4 {
+    public static void main(String[] args) { 
+        Scanner sc=new Scanner(System.in);
+        Employee obj=new Employee();
+        System.out.println("Enter Employee Name");
+        obj.s=sc.next();
+        obj.Name();
+        obj.Company();
+        
+        
+    }
+}
+
+//q5
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package day8;
+
+/**
+ *
+ * @author acer
+ */ 
+abstract class Base1{
+    abstract class Base2{
+        abstract void display();
+    }
+}
+class derived1 extends Base1{
+    class derived2 extends Base2{
+        void display(){
+            System.out.println("In ineer class of derived 1 that is derived 2");
+        }
+    }
+}
+public class q5 {
+    public static void main(String[] args) {
+        Base1.Base2 obj=new derived1().new derived2();
+        obj.display();
+    }
+}
+
+//q6
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package day8;
+
+/**
+ *
+ * @author acer
+ */ 
+abstract class Phone{ 
+    abstract void call();
+    abstract void sms();
+} 
+interface Camera{
+    void click();
+    void record();
+} 
+interface MusicPlayer{
+    void play();
+    void pause();
+    void stop();
+} 
+class Smartphone  extends Phone implements Camera,MusicPlayer{
+    void call(){
+        System.out.println("In phone do Calling");
+    } 
+    void sms(){
+        System.out.println("In phone do sms");
+    } 
+    public void click(){
+        System.out.println("In camera click");
+    } 
+    public void record(){
+        System.out.println("In camer Record");
+    } 
+    public void play(){
+        System.out.println("In MusicPlayer play");
+    } 
+    public void pause(){
+        System.out.println("In MusicPlayer pause");
+    } 
+    
+    @Override
+    public void stop(){
+        System.out.println("In MusicPlayer atop");
+    }
+
+
+}
+public class q6 {
+    public static void main(String[] args) {
+        Smartphone s=new Smartphone();
+        Phone P=s;
+        P.call();
+        P.sms();
+        Camera C=s;
+        C.click();
+        C.record();
+        MusicPlayer M=s;
+        M.play();
+        M.pause();
+        M.stop();
+    }
+}
+
+//q7
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package day8;
+
+/**
+ *
+ * @author acer
+ */ 
+interface test1{
+    int x=10;
+    default void meathod1(){
+        System.out.println("In Method 1 in test");
+    } 
+    void meathod2();
+/*  void meathod 3(){
+    
+    }*/
+    default void method4(){
+        System.out.println("In Method 1 in test");
+    }
+} 
+interface test2{
+    default void meathod1(){
+        System.out.println("In Method 1 in test1");
+    }
+} 
+class Test3 implements test1,test2{
+    @Override
+    public void meathod2(){
+        System.out.println("In method2 test 3");
+    }
+    public  void nethod5()
+    {
+        test1.super.method4();
+    }
+    public void meathod1(){
+        System.out.println("In test 3 method1");
+    }
+}
+public class q7 {
+    public static void main(String[] args) {
+        Test3 t=new Test3();
+        t.meathod1();
+        
+    }
+}
+
+//q8
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package day8;
+
+/**
+ *
+ * @author acer
+ */ 
+interface Test{
+    int x=10;
+    default  void method1(){ 
+        System.out.println("In test1 in meathod1");
+    }
+    static void method2(){
+         System.out.println("In test1 in meathod2");
+     } 
+} 
+class Test2 implements Test{
+    
+}
+
+public class q8 {
+    public static void main(String[] args) {
+        Test.method2();
+        Test2 t=new Test2();
+        t.method1();
+        
+    }
+}
